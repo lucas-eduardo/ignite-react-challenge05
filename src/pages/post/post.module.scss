@@ -1,1 +1,110 @@
-// TODO
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  > img {
+    width: auto;
+    height: 400px;
+
+    margin-bottom: 80px;
+  }
+}
+
+.contentPost {
+  margin: 0 auto;
+
+  h1 {
+    font-size: 4.8rem;
+    font-weight: bold;
+    line-height: 58px;
+
+    color: var(--white);
+  }
+}
+
+.contentInfo {
+  display: flex;
+  align-items: center;
+
+  margin-top: 24px;
+  margin-bottom: 64px;
+
+  time, span {
+    display: flex;
+    align-items: center;
+
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+
+    color: var(--gray-300);
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
+  span {
+    margin: 0 24px;
+  }
+}
+
+.contentBody {
+  margin: 36px 0;
+
+  h2 {
+    font-size: 3.6rem;
+    font-weight: bold;
+    line-height: 140%;
+
+    text-align: justify;
+
+    color: var(--white);
+  }
+
+  ul {
+    li + li {
+      margin-top: 1.8rem;
+    }
+
+    & + p {
+      margin-top: 1.8rem;
+    }
+  }
+
+  p {
+    font-size: 1.8rem;
+    font-weight: normal;
+    line-height: 140%;
+
+    text-align: justify;
+
+    color: var(--gray-200);
+
+    & + p, & + ul {
+      margin-top: 1.8rem;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--pink-500);
+
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+
+    img {
+      display: block;
+
+      max-width: 720px;
+
+      margin: 0 auto;
+    }
+  }
+}

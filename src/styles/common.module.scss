@@ -1,1 +1,10 @@
-// TODO
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maxWrapper {
+  width: 100%;
+  max-width: 720px;
+}
