@@ -18,6 +18,12 @@ html {
   font-size: 62.5%;
 }
 
+@media (max-width: 767px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 body {
   background-color: var(--gray-800);
 
