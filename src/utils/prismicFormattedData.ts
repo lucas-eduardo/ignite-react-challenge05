@@ -13,9 +13,22 @@ interface IFormattedDataPrismicResume {
   };
 }
 
-interface IFormattedDataPrismicContent {
+interface IOptions {
+  nextPost: {
+    uid: string;
+    title: string;
+  } | null;
+  prevPost: {
+    uid: string;
+    title: string;
+  } | null;
+  preview: boolean;
+}
+
+interface IFormattedDataPrismicContent extends IOptions {
   post: {
     first_publication_date: string;
+    last_publication_date: string;
     data: {
       title: string;
       banner: {
@@ -32,8 +45,12 @@ interface IFormattedDataPrismicContent {
   };
 }
 
-export const formattedDate = (date: string): string => {
-  const dateFormatted = format(parseISO(date), 'dd LLL yyyy', {
+export const formattedDate = (date: string, isLast = false): string => {
+  const mask = isLast
+    ? "'* editado em' dd LLL yyyy, à's' HH:mm"
+    : 'dd LLL yyyy';
+
+  const dateFormatted = format(parseISO(date), mask, {
     locale: ptBR,
   });
 
@@ -64,11 +81,13 @@ export const formattedDataPrismicResume = (
 };
 
 export const formattedDataPrismicContent = (
-  post: Document
+  post: Document,
+  options: IOptions
 ): IFormattedDataPrismicContent => {
   const postFormatted = {
     uid: post.uid,
     first_publication_date: post.first_publication_date,
+    last_publication_date: post.last_publication_date,
     data: {
       title: post.data.title,
       subtitle: post.data.subtitle,
@@ -85,5 +104,6 @@ export const formattedDataPrismicContent = (
 
   return {
     post: postFormatted,
+    ...options,
   };
 };

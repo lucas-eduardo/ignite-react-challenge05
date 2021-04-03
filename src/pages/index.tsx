@@ -59,7 +59,7 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>Posts | SpecaTraveling</title>
+        <title>Posts | SpaceTraveling</title>
       </Head>
 
       <Header />
