@@ -3,13 +3,19 @@ import Head from 'next/head';
 import Prismic from '@prismicio/client';
 import { FiCalendar, FiUser } from 'react-icons/fi';
 import Link from 'next/link';
-
 import { useEffect, useState } from 'react';
+
+import Header from '../components/Header';
+
+import {
+  formattedDataPrismicResume,
+  formattedDate,
+} from '../utils/prismicFormattedData';
+
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
-import { formattedDataPrismicResume } from '../utils/prismicFormattedData';
 
 interface Post {
   uid?: string;
@@ -56,6 +62,8 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
         <title>Posts | SpecaTraveling</title>
       </Head>
 
+      <Header />
+
       <main className={commonStyles.container}>
         <div className={commonStyles.maxWrapper}>
           {posts.map(post => (
@@ -66,7 +74,8 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
                   <p>{post.data.subtitle}</p>
                   <div>
                     <time>
-                      <FiCalendar size={20} /> {post.first_publication_date}
+                      <FiCalendar size={20} />{' '}
+                      {formattedDate(post.first_publication_date)}
                     </time>
                     <span>
                       <FiUser size={20} /> {post.data.author}
